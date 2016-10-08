@@ -48,10 +48,18 @@ require(["jquery","flip"],function(jquery,flip){
 			html += "<p>4、我是内容我是内容</p>";
 			html += "<p>5、我是内容我是内容</p>";
 			flip.htmlText("活动规则",html);
-		});	
+		});
+
+        //表单
+        $(".btn5").on("click",function(e){
+            e.preventDefault();
+            flip.formText("请输入表单信息",function(){
+                alert("回调");
+            });
+        });
 
 		//加载提示
-		$(".btn5").on("click",function(e){		
+		$(".btn6").on("click",function(e){
 			e.preventDefault();  
 			flip.loading("加载提示");
 		});
