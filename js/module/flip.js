@@ -117,4 +117,5 @@ define(["jquery"], function(jquery) {
 		}
 	}  
     return flip;
+    window.flip = flip;
 });
