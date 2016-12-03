@@ -1,7 +1,7 @@
 /*
  * @Author: Blues
  * @Description: require.js加载模块，调用模块和书写逻辑
- * @Date: 2016-08-01 00:00:00
+ * @upDate: 2016-12-01 00:00:00
  */
 require.config({
 	//js模块的文件路径
@@ -9,14 +9,15 @@ require.config({
 	//加载模块
 	paths:{
 		jquery:"jquery/jquery",
-		flip:"module/flip"
+		flip:"module/flip",
+        browser:"module/browser"
 	},
 	shim:{
 		"flip":["jquery"]
 	},
 	waitSeconds:0
 });
-require(["jquery","flip"],function(jquery,flip){
+require(["jquery","flip","browser"],function(jquery,flip,browser){
 	jquery(function(){	
 
 		//提示信息(单按钮)
@@ -63,6 +64,16 @@ require(["jquery","flip"],function(jquery,flip){
 			e.preventDefault();  
 			flip.loading("加载提示");
 		});
-	
+
+        //环境判断
+        $(".btn7").on("click",function(e){
+            e.preventDefault();
+            if (browser.versions.ios) {
+                flip.message("IOS系统");
+            } else if (browser.versions.android) {
+                flip.message("Android系统");
+            };
+        });
+        
 	});
 })
